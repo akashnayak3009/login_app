@@ -21,6 +21,15 @@ const userProfileSchema = new mongoose.Schema({
         required: true,
         min:6,
     },
+    roles:{
+        type:String,
+        default:"user",
+    },
+    user_image: {
+        type: String,
+        default:
+            "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png",
+    },
     verifytoken:{
         type: String,
     }

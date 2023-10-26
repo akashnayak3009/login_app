@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import { handleError, notFound } from "./middleware/errorHandler.js";
 import UserRouter from "./routes/userRouter.js";
 import rateLimit from "express-rate-limit";
+import activityRouter from "./routes/activityRouter.js";
 
 dotenv.config();
 connectDB();
@@ -39,6 +40,7 @@ const userApiLimiter = rateLimit({
 
 //Routes
 app.use("/api/user",userApiLimiter, UserRouter)
+app.use("/api/activity",activityRouter)
 
 
 //Error handling routes

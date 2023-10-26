@@ -10,7 +10,7 @@ import {
   signUp,
   updateProfile,
 } from "../controllers/userController.js";
-import {authMiddleware} from '../middleware/authMiddleware.js'
+import {authMiddleware, isAdmin} from '../middleware/authMiddleware.js'
 
 const UserRouter = express.Router();
 
@@ -19,7 +19,7 @@ UserRouter.post("/login", signIn);
 UserRouter.post("/sendpasswordlink", sendPasswordLink);
 UserRouter.post("/:id/:token", changePassword);
 
-UserRouter.get("/fetchAllProfile", authMiddleware, getAllUserProfile);
+UserRouter.get("/fetchAllProfile", authMiddleware,isAdmin,getAllUserProfile);
 UserRouter.get("/fetchProfile/:id", authMiddleware, getUserProfile);
 UserRouter.get("/forgotpassword/:id/:token", forgotpassword);
 
