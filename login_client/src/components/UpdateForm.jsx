@@ -14,6 +14,7 @@ function UpdateForm() {
   const navigate = useNavigate();
 
   const [editMode, setEditMode] = useState(false);
+  const [biographyView, setBiographyView]= useState(false);
   const [formData, setFormData] = useState({
     username: userProfile.username,
     email: userProfile.email,
@@ -111,6 +112,9 @@ function UpdateForm() {
   const handleChangeBack = () => {
     setViewPassword(false);
   };
+  const handleValueChange=()=>{
+    setBiographyView(false)
+  }
 
   return (
     <div className="profile-container">
@@ -181,12 +185,16 @@ function UpdateForm() {
               onChange={handleInputChange}
             />
             <lable>Biography:</lable>
+        
             <input
-              type="text"
-              name="biography"
-              value={formData.biography}
-              onChange={handleInputChange}
-            />
+            type="text"
+            name="biography"
+            value={formData.biography}
+            onChange={handleInputChange}
+            onClick={handleValueChange}
+            placeholder= {biographyView  ? (""):(userProfile.biography)}
+          />
+      
             <button className="update__button" onClick={handleSaveClick}>
               Save
             </button>

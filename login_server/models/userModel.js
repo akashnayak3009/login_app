@@ -25,6 +25,11 @@ const userProfileSchema = new mongoose.Schema({
         type:String,
         default:"user",
     },
+    biography:{
+        type:String,
+        min:6,
+        max:5000,
+    },
     user_image: {
         type: String,
         default:
